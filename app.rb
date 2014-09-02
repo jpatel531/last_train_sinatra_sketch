@@ -15,7 +15,3 @@ set :public_folder, 'public'
 get '/' do
   haml :index, :layout => :'layouts/application'
 end
-
-get '/about' do
-  haml :about, :layout => :'layouts/application'
-end

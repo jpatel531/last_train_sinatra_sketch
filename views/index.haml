@@ -1,1 +1,21 @@
-%h1 Sinatra has taken the stage
+.container{style: "margin-top: 60px", :"ng-controller" => "AppCtrl" }
+
+	.row
+		%form.form-group{:"ng-submit" => "findJourneys()"}
+			%label Get me the last times from
+			%input.form-control.text-center{:"ng-model" => "fromLocation"}
+
+			%label to
+			%input.form-control.text-center{:"ng-model" => "toLocation"}
+
+			%button.btn.btn-default.center-block{style: "margin-top: 30px"} Go!
+	
+
+	%div{:"ng-repeat" => "journey in lastJourneys.journeys"}
+		Duration: {{journey.duration}} minutes - {{journey.startDateTime}} to {{journey.arriveDateTime}}
+		%div{:"ng-repeat" => "leg in journey.legs"} {{leg.instruction.summary}}
+
+
+	
+
+
