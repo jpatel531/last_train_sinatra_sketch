@@ -43,9 +43,14 @@ app.controller('AppCtrl', ['$scope', '$http', function($scope, $http){
         listOfInstructions.push(leg.instruction.summary + "/" + leg.instruction.detailed)
       }
     })
-    $scope.instructions = listOfInstructions
+    $scope.instructions = listOfInstructions.join(". ");
+    sendToTwilio();
   }
 
+  var sendToTwilio = function(){
+    data = {phone_number: $scope.phoneNumber, instructions: $scope.instructions}
+    $http.post('/texts', data)
+  }
 
 
 }]);
