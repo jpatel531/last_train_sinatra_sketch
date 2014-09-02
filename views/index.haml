@@ -21,7 +21,7 @@
 
 		.panel-body 
 			%p{:"ng-repeat" => "leg in journey.legs"} {{leg.instruction.summary}}
-			%form.form-group{:"ng-show" => "showOptions"}
+			%form.form-group{:"ng-show" => "showOptions", :"ng-submit" => "sendToTwilio()"}
 				.input-group
 					%span
 						%input{type: 'checkbox'}
@@ -30,7 +30,7 @@
 					%span
 						%input{type: 'checkbox'}
 					%label Send text an hour before departure?
-			%p{:"ng-show" => "selectedJourney"} {{instructions}}
+				%button.btn.btn-default Choose this journey.
 
 
 	

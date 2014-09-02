@@ -44,10 +44,10 @@ app.controller('AppCtrl', ['$scope', '$http', function($scope, $http){
       }
     })
     $scope.instructions = listOfInstructions.join(". ");
-    sendToTwilio();
+    // sendToTwilio();
   }
 
-  var sendToTwilio = function(){
+  $scope.sendToTwilio = function(){
     data = {phone_number: $scope.phoneNumber, instructions: $scope.instructions}
     $http.post('/texts', data)
   }
