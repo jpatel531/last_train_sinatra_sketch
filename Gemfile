@@ -18,3 +18,5 @@ gem 'susy', '~> 1.0.5'
 gem 'thin', '~> 1.5.0'
 
 gem 'twilio-ruby'
+
+gem 'sidekiq'

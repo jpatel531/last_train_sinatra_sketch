@@ -24,12 +24,14 @@
 			%form.form-group{:"ng-show" => "showOptions", :"ng-submit" => "sendToTwilio()"}
 				.input-group
 					%span
-						%input{type: 'checkbox'}
+						%input{type: 'checkbox', :"ng-model" => "whenSend", :"ng-true-value" => "now"}
 					%label Send text now?
 				.input-group
 					%span
-						%input{type: 'checkbox'}
+						%input{type: 'checkbox', :"ng-model" => "whenSend", :"ng-true-value" => "then"}
 					%label Send text an hour before departure?
+
+				
 				%button.btn.btn-default Choose this journey.
 
 

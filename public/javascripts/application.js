@@ -1,6 +1,7 @@
 
 var app = angular.module('app', []);
 
+
 app.controller('AppCtrl', ['$scope', '$http', function($scope, $http){
 
 
@@ -24,7 +25,7 @@ app.controller('AppCtrl', ['$scope', '$http', function($scope, $http){
 
 
 
-}]).controller('JourneyInstanceCtrl', ['$scope', '$http', function($scope, $http){
+}]).controller('JourneyInstanceCtrl', ['$scope', '$http', '$location', function($scope, $http, $location){
 
   $scope.selectJourney = function(journey){
       $scope.showOptions = true;
@@ -47,9 +48,14 @@ app.controller('AppCtrl', ['$scope', '$http', function($scope, $http){
     // sendToTwilio();
   }
 
+
   $scope.sendToTwilio = function(){
-    data = {phone_number: $scope.phoneNumber, instructions: $scope.instructions}
+    // $location.url('/confirmation')
+
+
+    data = {phone_number: $scope.phoneNumber, instructions: $scope.instructions, departureTime: $scope.selectedJourney.startDateTime, when: $scope.whenSend }
     $http.post('/texts', data)
+
   }
 
 
