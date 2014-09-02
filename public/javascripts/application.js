@@ -22,5 +22,31 @@ app.controller('AppCtrl', ['$scope', '$http', function($scope, $http){
 
 
 
+
+
+}]).controller('JourneyInstanceCtrl', ['$scope', '$http', function($scope, $http){
+
+  $scope.selectJourney = function(journey){
+      $scope.showOptions = true;
+      $scope.selectedJourney = journey;
+      $scope.getInstructions()
+  };
+
+  $scope.getInstructions = function(){
+    var listOfInstructions = []
+    _.each($scope.selectedJourney.legs, function(leg){
+      if(leg.instruction.steps.length > 0){
+        _.each(leg.instruction.steps, function(step){
+          listOfInstructions.push(step.description)
+        })
+      } else {
+        listOfInstructions.push(leg.instruction.summary + "/" + leg.instruction.detailed)
+      }
+    })
+    $scope.instructions = listOfInstructions
+  }
+
+
+
 }]);
 

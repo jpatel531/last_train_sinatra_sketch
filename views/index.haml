@@ -8,12 +8,29 @@
 			%label to
 			%input.form-control.text-center{:"ng-model" => "toLocation"}
 
+			%label your Twilio-registered phone number
+			%input.form-control.text-center{:"ng-model" => "phoneNumber"}
+
 			%button.btn.btn-default.center-block{style: "margin-top: 30px"} Go!
 	
 
-	%div{:"ng-repeat" => "journey in lastJourneys.journeys"}
-		Duration: {{journey.duration}} minutes - {{journey.startDateTime}} to {{journey.arriveDateTime}}
-		%div{:"ng-repeat" => "leg in journey.legs"} {{leg.instruction.summary}}
+	.panel.panel-default{:"ng-repeat" => "journey in lastJourneys.journeys", :"ng-controller" => "JourneyInstanceCtrl"}
+		.panel-heading 
+			%h3.panel-title 
+				%a{href: '#', :"ng-click" => "selectJourney(journey)"} Duration: {{journey.duration}} minutes - {{journey.startDateTime}} to {{journey.arrivalDateTime}}
+
+		.panel-body 
+			%p{:"ng-repeat" => "leg in journey.legs"} {{leg.instruction.summary}}
+			%form.form-group{:"ng-show" => "showOptions"}
+				.input-group
+					%span
+						%input{type: 'checkbox'}
+					%label Send text now?
+				.input-group
+					%span
+						%input{type: 'checkbox'}
+					%label Send text an hour before departure?
+			%p{:"ng-show" => "selectedJourney"} {{instructions}}
 
 
 	
