@@ -1,5 +1,25 @@
 
-var app = angular.module('app', []);
+var app = angular.module('app', ['firebase']);
+
+app.controller('LoginCtrl', ['$scope', '$firebase', '$firebaseSimpleLogin', function($scope, $firebase, $firebaseSimpleLogin){
+
+  var ref = new Firebase("https://lasttrain.firebaseio.com/");
+
+  var authClient = $firebaseSimpleLogin(ref);
+
+    $scope.loginWithFacebook = function() {
+        authClient.$login("facebook").then(function(user) {
+        console.log("Logged in as: " + user.uid);
+        $scope.user = user
+      }, function(error) {
+        console.error("Login failed: " + error);
+      });
+    }
+
+
+
+}]);
+
 
 
 app.controller('AppCtrl', ['$scope', '$http', function($scope, $http){

@@ -15,6 +15,11 @@ set :views, 'views'
 set :public_folder, 'public'
 
 # Application routes
+
+get '/login' do 
+	haml :login, :layout => :'layouts/application'
+end
+
 get '/' do
   haml :index, :layout => :'layouts/application'
 end

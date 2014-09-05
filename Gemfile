@@ -19,3 +19,4 @@ gem 'thin', '~> 1.5.0'
 
 gem 'twilio-ruby'
 
+gem 'iron_worker_ng'
